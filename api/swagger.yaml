@@ -1,0 +1,2143 @@
+---
+swagger: "2.0"
+info:
+  description: "apivoids client for sendpost"
+  version: "0.1"
+  title: "apivoid"
+host: "endpoint.apivoid.com"
+schemes:
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /domainbl/v1/pay-as-you-go/:
+    get:
+      description: "Get domain reputation"
+      parameters:
+      - name: "key"
+        in: "query"
+        description: "string (your key)"
+        required: true
+        type: "string"
+        x-exportParamName: "Key"
+      - name: "host"
+        in: "query"
+        description: "domain name"
+        required: true
+        type: "string"
+        x-exportParamName: "Host"
+      responses:
+        "200":
+          description: "Auto generated using Swagger Inspector"
+          schema:
+            $ref: "#/definitions/models.blacklist"
+  /domainage/v1/pay-as-you-go/:
+    get:
+      description: "Get domain reputation"
+      parameters:
+      - name: "key"
+        in: "query"
+        description: "string (your key)"
+        required: true
+        type: "string"
+        x-exportParamName: "Key"
+      - name: "host"
+        in: "query"
+        description: "domain name"
+        required: true
+        type: "string"
+        x-exportParamName: "Host"
+      responses:
+        "200":
+          description: "Auto generated using Swagger Inspector"
+          schema:
+            $ref: "#/definitions/models.age"
+  /sslinfo/v1/pay-as-you-go/:
+    get:
+      description: "Get domain ssl"
+      parameters:
+      - name: "key"
+        in: "query"
+        description: "string (your key)"
+        required: true
+        type: "string"
+        x-exportParamName: "Key"
+      - name: "host"
+        in: "query"
+        description: "domain name"
+        required: true
+        type: "string"
+        x-exportParamName: "Host"
+      responses:
+        "200":
+          description: "Auto generated using Swagger Inspector"
+          schema:
+            $ref: "#/definitions/models.ssl"
+definitions:
+  models.age:
+    type: "object"
+    properties:
+      data:
+        $ref: "models.age_data"
+      credits_remained:
+        type: "number"
+      estimated_queries:
+        type: "string"
+      elapsed_time:
+        type: "string"
+      success:
+        type: "boolean"
+    example:
+      credits_remained: 5.962133916683182377482808078639209270477294921875
+      data:
+        domain_creation_date: "2000-01-23"
+        domain_age_in_days: 0
+        domain_age_in_years: 1
+        domain_registered: "domain_registered"
+        host: "host"
+        domain_age_found: true
+        domain_age_in_months: 6
+        debug_message: "debug_message"
+      success: true
+      elapsed_time: "elapsed_time"
+      estimated_queries: "estimated_queries"
+  models.ssl:
+    type: "object"
+    properties:
+      data:
+        $ref: "models.ssl_data"
+      credits_remained:
+        type: "number"
+      estimated_queries:
+        type: "string"
+      elapsed_time:
+        type: "string"
+      success:
+        type: "boolean"
+    example:
+      credits_remained: 5.962133916683182377482808078639209270477294921875
+      data:
+        certificate:
+          blacklisted: true
+          found: true
+          expired: true
+          fingerprint: "fingerprint"
+          details:
+            extensions:
+              crl_distribution_points: "crl_distribution_points"
+              certificate_policies: "certificate_policies"
+              key_usage: "key_usage"
+              authority_info_access: "authority_info_access"
+              authority_key_identifier: "authority_key_identifier"
+              basic_constraints: "basic_constraints"
+              subject_key_identifier: "subject_key_identifier"
+              extended_key_usage: "extended_key_usage"
+            signature:
+              serial: "serial"
+              serial_hex: "serial_hex"
+              type: "type"
+            subject:
+              country: "country"
+              street: "street"
+              organization: "organization"
+              name: "name"
+              location: "location"
+              state: "state"
+              common_name: "common_name"
+              alternative_names: "alternative_names"
+              category: "category"
+              postal_code: "postal_code"
+              organization_unit: "organization_unit"
+            validity:
+              days_left: 0
+              valid_to: "valid_to"
+              valid_from: "valid_from"
+              valid_from_timestamp: 6
+              valid_to_timestamp: 1
+            issuer:
+              country: "country"
+              organization: "organization"
+              location: "location"
+              state: "state"
+              common_name: "common_name"
+              organization_unit: "organization_unit"
+          valid_peer: true
+          deprecated_issuer: true
+          name_match: true
+          debug_message: "debug_message"
+      success: true
+      elapsed_time: "elapsed_time"
+      estimated_queries: "estimated_queries"
+  models.blacklist:
+    type: "object"
+    properties:
+      data:
+        $ref: "models.blacklist_data"
+      credits_remained:
+        type: "number"
+      estimated_queries:
+        type: "string"
+      elapsed_time:
+        type: "string"
+      success:
+        type: "boolean"
+    example:
+      credits_remained: 2.3021358869347654518833223846741020679473876953125
+      data:
+        report:
+          server:
+            continent_name: "continent_name"
+            country_code: "country_code"
+            city_name: "city_name"
+            ip: "ip"
+            latitude: 5.962133916683182377482808078639209270477294921875
+            isp: "isp"
+            country_name: "country_name"
+            continent_code: "continent_code"
+            region_name: "region_name"
+            reverse_dns: "reverse_dns"
+            longitude: 5.63737665663332876420099637471139430999755859375
+          most_abused_tld: true
+          alexa_top_250k: true
+          blacklists:
+            scantime: "scantime"
+            detection_rate: "detection_rate"
+            engines:
+              "22":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "23":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "24":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "25":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "26":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "27":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "28":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "29":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "30":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "31":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "10":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "32":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "11":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "33":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "12":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "34":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "13":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "35":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "14":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "36":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "15":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "37":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "16":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "38":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "17":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "39":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "18":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "19":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "0":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "1":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "2":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "3":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "4":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "5":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "6":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "7":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "8":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "9":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "40":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "41":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "20":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "42":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "21":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+              "43":
+                reference: "reference"
+                elapsed: "elapsed"
+                engine: "engine"
+                confidence: "confidence"
+                detected: true
+            engines_count: 1
+            detections: 6
+          host: "host"
+          alexa_top_10k: true
+          domain_length: 0
+          category:
+            is_anonymizer: true
+            is_free_hosting: true
+            is_free_dynamic_dns: true
+            is_url_shortener: true
+          alexa_top_100k: true
+      success: true
+      elapsed_time: "elapsed_time"
+      estimated_queries: "estimated_queries"
+  models.age_data:
+    type: "object"
+    properties:
+      host:
+        type: "string"
+      debug_message:
+        type: "string"
+      domain_age_found:
+        type: "boolean"
+      domain_registered:
+        type: "string"
+      domain_creation_date:
+        type: "string"
+        format: "date"
+      domain_age_in_days:
+        type: "integer"
+        format: "int32"
+      domain_age_in_months:
+        type: "integer"
+        format: "int32"
+      domain_age_in_years:
+        type: "integer"
+        format: "int32"
+    example:
+      domain_creation_date: "2000-01-23"
+      domain_age_in_days: 0
+      domain_age_in_years: 1
+      domain_registered: "domain_registered"
+      host: "host"
+      domain_age_found: true
+      domain_age_in_months: 6
+      debug_message: "debug_message"
+  models.ssl_data_certificate_details_subject:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      common_name:
+        type: "string"
+      alternative_names:
+        type: "string"
+      organization_unit:
+        type: "string"
+      organization:
+        type: "string"
+      category:
+        type: "string"
+      country:
+        type: "string"
+      street:
+        type: "string"
+      postal_code:
+        type: "string"
+      state:
+        type: "string"
+      location:
+        type: "string"
+    example:
+      country: "country"
+      street: "street"
+      organization: "organization"
+      name: "name"
+      location: "location"
+      state: "state"
+      common_name: "common_name"
+      alternative_names: "alternative_names"
+      category: "category"
+      postal_code: "postal_code"
+      organization_unit: "organization_unit"
+  models.ssl_data_certificate_details_issuer:
+    type: "object"
+    properties:
+      common_name:
+        type: "string"
+      organization:
+        type: "string"
+      country:
+        type: "string"
+      state:
+        type: "string"
+      location:
+        type: "string"
+      organization_unit:
+        type: "string"
+    example:
+      country: "country"
+      organization: "organization"
+      location: "location"
+      state: "state"
+      common_name: "common_name"
+      organization_unit: "organization_unit"
+  models.ssl_data_certificate_details_signature:
+    type: "object"
+    properties:
+      serial:
+        type: "string"
+      serial_hex:
+        type: "string"
+      type:
+        type: "string"
+    example:
+      serial: "serial"
+      serial_hex: "serial_hex"
+      type: "type"
+  models.ssl_data_certificate_details_validity:
+    type: "object"
+    properties:
+      days_left:
+        type: "integer"
+        format: "int32"
+      valid_from_timestamp:
+        type: "integer"
+        format: "int32"
+      valid_to_timestamp:
+        type: "integer"
+        format: "int32"
+      valid_from:
+        type: "string"
+      valid_to:
+        type: "string"
+    example:
+      days_left: 0
+      valid_to: "valid_to"
+      valid_from: "valid_from"
+      valid_from_timestamp: 6
+      valid_to_timestamp: 1
+  models.ssl_data_certificate_details_extensions:
+    type: "object"
+    properties:
+      authority_key_identifier:
+        type: "string"
+      subject_key_identifier:
+        type: "string"
+      key_usage:
+        type: "string"
+      extended_key_usage:
+        type: "string"
+      crl_distribution_points:
+        type: "string"
+      certificate_policies:
+        type: "string"
+      authority_info_access:
+        type: "string"
+      basic_constraints:
+        type: "string"
+    example:
+      crl_distribution_points: "crl_distribution_points"
+      certificate_policies: "certificate_policies"
+      key_usage: "key_usage"
+      authority_info_access: "authority_info_access"
+      authority_key_identifier: "authority_key_identifier"
+      basic_constraints: "basic_constraints"
+      subject_key_identifier: "subject_key_identifier"
+      extended_key_usage: "extended_key_usage"
+  models.ssl_data_certificate_details:
+    type: "object"
+    properties:
+      subject:
+        $ref: "models.ssl_data_certificate_details_subject"
+      issuer:
+        $ref: "models.ssl_data_certificate_details_issuer"
+      signature:
+        $ref: "models.ssl_data_certificate_details_signature"
+      validity:
+        $ref: "models.ssl_data_certificate_details_validity"
+      extensions:
+        $ref: "models.ssl_data_certificate_details_extensions"
+    example:
+      extensions:
+        crl_distribution_points: "crl_distribution_points"
+        certificate_policies: "certificate_policies"
+        key_usage: "key_usage"
+        authority_info_access: "authority_info_access"
+        authority_key_identifier: "authority_key_identifier"
+        basic_constraints: "basic_constraints"
+        subject_key_identifier: "subject_key_identifier"
+        extended_key_usage: "extended_key_usage"
+      signature:
+        serial: "serial"
+        serial_hex: "serial_hex"
+        type: "type"
+      subject:
+        country: "country"
+        street: "street"
+        organization: "organization"
+        name: "name"
+        location: "location"
+        state: "state"
+        common_name: "common_name"
+        alternative_names: "alternative_names"
+        category: "category"
+        postal_code: "postal_code"
+        organization_unit: "organization_unit"
+      validity:
+        days_left: 0
+        valid_to: "valid_to"
+        valid_from: "valid_from"
+        valid_from_timestamp: 6
+        valid_to_timestamp: 1
+      issuer:
+        country: "country"
+        organization: "organization"
+        location: "location"
+        state: "state"
+        common_name: "common_name"
+        organization_unit: "organization_unit"
+  models.ssl_data_certificate:
+    type: "object"
+    properties:
+      found:
+        type: "boolean"
+      debug_message:
+        type: "string"
+      fingerprint:
+        type: "string"
+      blacklisted:
+        type: "boolean"
+      valid_peer:
+        type: "boolean"
+      deprecated_issuer:
+        type: "boolean"
+      name_match:
+        type: "boolean"
+      expired:
+        type: "boolean"
+      details:
+        $ref: "models.ssl_data_certificate_details"
+    example:
+      blacklisted: true
+      found: true
+      expired: true
+      fingerprint: "fingerprint"
+      details:
+        extensions:
+          crl_distribution_points: "crl_distribution_points"
+          certificate_policies: "certificate_policies"
+          key_usage: "key_usage"
+          authority_info_access: "authority_info_access"
+          authority_key_identifier: "authority_key_identifier"
+          basic_constraints: "basic_constraints"
+          subject_key_identifier: "subject_key_identifier"
+          extended_key_usage: "extended_key_usage"
+        signature:
+          serial: "serial"
+          serial_hex: "serial_hex"
+          type: "type"
+        subject:
+          country: "country"
+          street: "street"
+          organization: "organization"
+          name: "name"
+          location: "location"
+          state: "state"
+          common_name: "common_name"
+          alternative_names: "alternative_names"
+          category: "category"
+          postal_code: "postal_code"
+          organization_unit: "organization_unit"
+        validity:
+          days_left: 0
+          valid_to: "valid_to"
+          valid_from: "valid_from"
+          valid_from_timestamp: 6
+          valid_to_timestamp: 1
+        issuer:
+          country: "country"
+          organization: "organization"
+          location: "location"
+          state: "state"
+          common_name: "common_name"
+          organization_unit: "organization_unit"
+      valid_peer: true
+      deprecated_issuer: true
+      name_match: true
+      debug_message: "debug_message"
+  models.ssl_data:
+    type: "object"
+    properties:
+      certificate:
+        $ref: "models.ssl_data_certificate"
+    example:
+      certificate:
+        blacklisted: true
+        found: true
+        expired: true
+        fingerprint: "fingerprint"
+        details:
+          extensions:
+            crl_distribution_points: "crl_distribution_points"
+            certificate_policies: "certificate_policies"
+            key_usage: "key_usage"
+            authority_info_access: "authority_info_access"
+            authority_key_identifier: "authority_key_identifier"
+            basic_constraints: "basic_constraints"
+            subject_key_identifier: "subject_key_identifier"
+            extended_key_usage: "extended_key_usage"
+          signature:
+            serial: "serial"
+            serial_hex: "serial_hex"
+            type: "type"
+          subject:
+            country: "country"
+            street: "street"
+            organization: "organization"
+            name: "name"
+            location: "location"
+            state: "state"
+            common_name: "common_name"
+            alternative_names: "alternative_names"
+            category: "category"
+            postal_code: "postal_code"
+            organization_unit: "organization_unit"
+          validity:
+            days_left: 0
+            valid_to: "valid_to"
+            valid_from: "valid_from"
+            valid_from_timestamp: 6
+            valid_to_timestamp: 1
+          issuer:
+            country: "country"
+            organization: "organization"
+            location: "location"
+            state: "state"
+            common_name: "common_name"
+            organization_unit: "organization_unit"
+        valid_peer: true
+        deprecated_issuer: true
+        name_match: true
+        debug_message: "debug_message"
+  models.blacklist_data_report_blacklists_engines_0:
+    type: "object"
+    properties:
+      engine:
+        type: "string"
+      detected:
+        type: "boolean"
+      reference:
+        type: "string"
+      confidence:
+        type: "string"
+      elapsed:
+        type: "string"
+    example:
+      reference: "reference"
+      elapsed: "elapsed"
+      engine: "engine"
+      confidence: "confidence"
+      detected: true
+  models.blacklist_data_report_blacklists_engines:
+    type: "object"
+    properties:
+      "0":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "1":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "2":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "3":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "4":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "5":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "6":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "7":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "8":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "9":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "10":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "11":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "12":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "13":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "14":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "15":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "16":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "17":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "18":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "19":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "20":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "21":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "22":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "23":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "24":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "25":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "26":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "27":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "28":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "29":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "30":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "31":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "32":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "33":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "34":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "35":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "36":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "37":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "38":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "39":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "40":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "41":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "42":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+      "43":
+        $ref: "models.blacklist_data_report_blacklists_engines_0"
+    example:
+      "22":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "23":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "24":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "25":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "26":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "27":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "28":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "29":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "30":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "31":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "10":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "32":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "11":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "33":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "12":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "34":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "13":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "35":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "14":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "36":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "15":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "37":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "16":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "38":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "17":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "39":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "18":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "19":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "0":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "1":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "2":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "3":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "4":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "5":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "6":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "7":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "8":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "9":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "40":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "41":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "20":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "42":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "21":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+      "43":
+        reference: "reference"
+        elapsed: "elapsed"
+        engine: "engine"
+        confidence: "confidence"
+        detected: true
+  models.blacklist_data_report_blacklists:
+    type: "object"
+    properties:
+      engines:
+        $ref: "models.blacklist_data_report_blacklists_engines"
+      detections:
+        type: "integer"
+        format: "int32"
+      engines_count:
+        type: "integer"
+        format: "int32"
+      detection_rate:
+        type: "string"
+      scantime:
+        type: "string"
+    example:
+      scantime: "scantime"
+      detection_rate: "detection_rate"
+      engines:
+        "22":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "23":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "24":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "25":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "26":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "27":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "28":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "29":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "30":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "31":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "10":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "32":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "11":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "33":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "12":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "34":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "13":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "35":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "14":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "36":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "15":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "37":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "16":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "38":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "17":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "39":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "18":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "19":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "0":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "1":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "2":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "3":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "4":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "5":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "6":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "7":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "8":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "9":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "40":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "41":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "20":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "42":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "21":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+        "43":
+          reference: "reference"
+          elapsed: "elapsed"
+          engine: "engine"
+          confidence: "confidence"
+          detected: true
+      engines_count: 1
+      detections: 6
+  models.blacklist_data_report_category:
+    type: "object"
+    properties:
+      is_free_hosting:
+        type: "boolean"
+      is_anonymizer:
+        type: "boolean"
+      is_url_shortener:
+        type: "boolean"
+      is_free_dynamic_dns:
+        type: "boolean"
+    example:
+      is_anonymizer: true
+      is_free_hosting: true
+      is_free_dynamic_dns: true
+      is_url_shortener: true
+  models.blacklist_data_report_server:
+    type: "object"
+    properties:
+      ip:
+        type: "string"
+      reverse_dns:
+        type: "string"
+      continent_code:
+        type: "string"
+      continent_name:
+        type: "string"
+      country_code:
+        type: "string"
+      country_name:
+        type: "string"
+      region_name:
+        type: "string"
+      city_name:
+        type: "string"
+      latitude:
+        type: "number"
+      longitude:
+        type: "number"
+      isp:
+        type: "string"
+    example:
+      continent_name: "continent_name"
+      country_code: "country_code"
+      city_name: "city_name"
+      ip: "ip"
+      latitude: 5.962133916683182377482808078639209270477294921875
+      isp: "isp"
+      country_name: "country_name"
+      continent_code: "continent_code"
+      region_name: "region_name"
+      reverse_dns: "reverse_dns"
+      longitude: 5.63737665663332876420099637471139430999755859375
+  models.blacklist_data_report:
+    type: "object"
+    properties:
+      host:
+        type: "string"
+      domain_length:
+        type: "integer"
+        format: "int32"
+      most_abused_tld:
+        type: "boolean"
+      alexa_top_10k:
+        type: "boolean"
+      alexa_top_100k:
+        type: "boolean"
+      alexa_top_250k:
+        type: "boolean"
+      blacklists:
+        $ref: "models.blacklist_data_report_blacklists"
+      category:
+        $ref: "models.blacklist_data_report_category"
+      server:
+        $ref: "models.blacklist_data_report_server"
+    example:
+      server:
+        continent_name: "continent_name"
+        country_code: "country_code"
+        city_name: "city_name"
+        ip: "ip"
+        latitude: 5.962133916683182377482808078639209270477294921875
+        isp: "isp"
+        country_name: "country_name"
+        continent_code: "continent_code"
+        region_name: "region_name"
+        reverse_dns: "reverse_dns"
+        longitude: 5.63737665663332876420099637471139430999755859375
+      most_abused_tld: true
+      alexa_top_250k: true
+      blacklists:
+        scantime: "scantime"
+        detection_rate: "detection_rate"
+        engines:
+          "22":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "23":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "24":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "25":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "26":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "27":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "28":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "29":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "30":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "31":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "10":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "32":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "11":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "33":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "12":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "34":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "13":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "35":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "14":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "36":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "15":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "37":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "16":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "38":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "17":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "39":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "18":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "19":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "0":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "1":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "2":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "3":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "4":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "5":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "6":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "7":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "8":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "9":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "40":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "41":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "20":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "42":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "21":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+          "43":
+            reference: "reference"
+            elapsed: "elapsed"
+            engine: "engine"
+            confidence: "confidence"
+            detected: true
+        engines_count: 1
+        detections: 6
+      host: "host"
+      alexa_top_10k: true
+      domain_length: 0
+      category:
+        is_anonymizer: true
+        is_free_hosting: true
+        is_free_dynamic_dns: true
+        is_url_shortener: true
+      alexa_top_100k: true
+  models.blacklist_data:
+    type: "object"
+    properties:
+      report:
+        $ref: "models.blacklist_data_report"
+    example:
+      report:
+        server:
+          continent_name: "continent_name"
+          country_code: "country_code"
+          city_name: "city_name"
+          ip: "ip"
+          latitude: 5.962133916683182377482808078639209270477294921875
+          isp: "isp"
+          country_name: "country_name"
+          continent_code: "continent_code"
+          region_name: "region_name"
+          reverse_dns: "reverse_dns"
+          longitude: 5.63737665663332876420099637471139430999755859375
+        most_abused_tld: true
+        alexa_top_250k: true
+        blacklists:
+          scantime: "scantime"
+          detection_rate: "detection_rate"
+          engines:
+            "22":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "23":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "24":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "25":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "26":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "27":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "28":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "29":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "30":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "31":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "10":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "32":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "11":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "33":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "12":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "34":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "13":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "35":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "14":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "36":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "15":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "37":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "16":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "38":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "17":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "39":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "18":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "19":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "0":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "1":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "2":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "3":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "4":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "5":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "6":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "7":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "8":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "9":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "40":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "41":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "20":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "42":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "21":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+            "43":
+              reference: "reference"
+              elapsed: "elapsed"
+              engine: "engine"
+              confidence: "confidence"
+              detected: true
+          engines_count: 1
+          detections: 6
+        host: "host"
+        alexa_top_10k: true
+        domain_length: 0
+        category:
+          is_anonymizer: true
+          is_free_hosting: true
+          is_free_dynamic_dns: true
+          is_url_shortener: true
+        alexa_top_100k: true
